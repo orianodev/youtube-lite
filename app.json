@@ -2,7 +2,7 @@
   "expo": {
     "name": "youtube-lite",
     "slug": "youtube-lite",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Lite YouTube clone UI (NewPipe like) that fetches YouTube APIs.",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",

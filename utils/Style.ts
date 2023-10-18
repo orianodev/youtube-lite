@@ -5,9 +5,9 @@ export const customStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#2D2A3A",
     alignItems: "center",
-    justifyContent: "center",
     textAlign: "center",
     padding: 10,
+    paddingTop: 20,
   },
   heading: {
     color: "#fff",
@@ -57,6 +57,7 @@ export const customStyles = StyleSheet.create({
     columnGap: 10,
     marginVertical: 10,
     borderRadius: 5,
+    width: "100%",
   },
   image: {
     width: 100,
@@ -123,5 +124,34 @@ export const customStyles = StyleSheet.create({
 
     backgroundColor: "lightgrey",
   },
-  routerTab: {},
+  modalContent: {
+    height: "25%",
+    width: "100%",
+    backgroundColor: "#25292e",
+    borderTopRightRadius: 18,
+    borderTopLeftRadius: 18,
+    position: "absolute",
+    bottom: 0,
+  },
+  titleContainer: {
+    height: "16%",
+    backgroundColor: "#464C55",
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
+    paddingHorizontal: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  modalTitle: {
+    color: "#fff",
+    fontSize: 16,
+  },
+  pickerContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 50,
+    paddingVertical: 20,
+  },
 });

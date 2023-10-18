@@ -11,8 +11,7 @@ export interface SearchVideo {
 }
 
 export interface SavedVideo {
-  id: number;
-  youtubeId: string;
+  id: string;
   title: string;
   channel: string;
   thumbnailUrl: string;

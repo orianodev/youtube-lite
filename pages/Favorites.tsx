@@ -1,32 +1,46 @@
 import { customStyles } from "../utils/Style";
-// import { storage } from "../utils/DB";
-import { useContext } from "react";
+import { storage } from "../utils/DB";
+import { useContext, useState } from "react";
+import { FavoritesContext, UpdateFavoritesContext, UpdateVideoContext } from "../App";
 import { View, Text, FlatList, Pressable, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-// import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { FavoritesContext, UpdateFavoritesContext, UpdateVideoContext } from "../App";
+import { LongPressGestureHandler } from "react-native-gesture-handler";
+import DeleteModal from "../components/DeleteModal";
 import Router from "../components/Router";
-import { SavedVideo } from "../Interface";
+import { SavedVideo, SearchVideo } from "../Interface";
 
 const Favorites: React.FC = () => {
-  const navigation = useNavigation();
-  const updatePlayingVideo: (newVideoId: string) => void = useContext(UpdateVideoContext);
+  const [isModalVisible, setDeleteModalVisible] = useState(false);
+  const onModalClose = () => {
+    setDeleteModalVisible(false);
+  };
+  
   const favoriteVideos: SavedVideo[] = useContext<SavedVideo[]>(FavoritesContext);
-  // const updateFavoriteVideos: (updatedFavorites: SavedVideo[]) => void = useContext(UpdateFavoritesContext);
+  const updateFavoriteVideos: (updatedFavorites: SavedVideo[]) => void = useContext(UpdateFavoritesContext);
+
+  const [selectedVideoId, setSelectedVideoId] = useState<string>("yhy335g2Wu8");
+  const [videoTitle, setVideoTitle] = useState<string>();
+
+  const navigation = useNavigation()
+  const updatePlayingVideo: (newVideoId: string) => void = useContext(UpdateVideoContext);
 
   const playVideo = async (videoId: string): Promise<void> => {
     navigation.navigate("Player" as never);
     updatePlayingVideo(videoId)
   }
 
-  // const deleteFromFavorites = (id: number): void => {
-  //   const updatedFavorites = favoriteVideos;
-  //   updatedFavorites.splice(id, 1);
-  //   updateFavoriteVideos(updatedFavorites);
-  //   storage.set("Favorites", JSON.stringify(updatedFavorites));
-  //   alert("Removed from favorites");
-  //   navigation.navigate("Player" as never);
-  // };
+  const onLongPress = (videoToAdd: SavedVideo): void => {
+    setSelectedVideoId(videoToAdd.id)
+    setVideoTitle(videoToAdd.title)
+    setDeleteModalVisible(true)
+  }
+
+  const deleteFromFavorites = (): void => {
+    const updatedFavorites = favoriteVideos.filter((favoriteVideo) => favoriteVideo.id !== selectedVideoId)
+    updateFavoriteVideos(updatedFavorites);
+    storage.set("Favorites", JSON.stringify(updatedFavorites));
+    setDeleteModalVisible(false)
+  };
 
   return (
     <View style={customStyles.container}>
@@ -34,32 +48,26 @@ const Favorites: React.FC = () => {
       <FlatList
         data={favoriteVideos}
         contentContainerStyle={customStyles.list}
-        renderItem={({ item }) => {
-          return (
-            <Pressable
-              style={({ pressed }) => [
-                customStyles.row,
-                { backgroundColor: pressed ? "grey" : "lightgrey" },
-              ]} onPress={() => playVideo(item.youtubeId)}>
-              <Image
-                source={{ uri: item.thumbnailUrl }}
-                style={customStyles.image}
-              />
+        renderItem={({ item }) => (
+          <LongPressGestureHandler onGestureEvent={() => onLongPress(item)} minDurationMs={500}>
+          <Pressable
+              style={({ pressed }) => [customStyles.row, { backgroundColor: pressed ? "grey" : "lightgrey" }]} 
+              onPress={() => playVideo(item.id)}>
+              <Image source={{ uri: item.thumbnailUrl }} style={customStyles.image} />
               <View>
                 <Text style={customStyles.title}>{item.title}</Text>
                 <Text style={customStyles.info}>
                   {item.channel}
-                  {/* <Pressable onPress={() => deleteFromFavorites(item.id)}>
-                    <FontAwesome name="trash" size={12} color={"black"} style={{ marginLeft: 5 }} />
-                  </Pressable> */}
+                  <DeleteModal isVisible={isModalVisible} onClose={onModalClose} onClick={deleteFromFavorites} title={videoTitle!} />
                 </Text>
               </View>
             </Pressable>
-          );
-        }}
+        </LongPressGestureHandler>
+          )}
       />
       <Router />
     </View>
   );
 }
+
 export default Favorites;

@@ -11,13 +11,14 @@ import Player from "./pages/Player";
 export const VideoContext: Context<string> = createContext("");
 export const UpdateVideoContext: Context<(newVideoId: string) => void> = createContext((newVideoId: string): void => { });
 
-export const FavoritesContext: Context<SavedVideo[]> = createContext([{id: 0, youtubeId: "", title: "", channel: "", thumbnailUrl: ""}]);
+export const FavoritesContext: Context<SavedVideo[]> = createContext([{id: "", title: "", channel: "", thumbnailUrl: ""}]);
 export const UpdateFavoritesContext: Context<(updatedFavorites: SavedVideo[]) => void> = createContext((updatedFavorites: SavedVideo[]): void => { });
 
 const Stack = createNativeStackNavigator();
 
 const App: React.FC = () => {
-  const [videoId, setVideoId] = useState<string>("qmqtiVgtMcI");
+  const [videoId, setVideoId] = useState<string>("");
+  if (!storage.getAllKeys().includes("mmkv.default\\Favorites")) storage.set("Favorites", "[]");
   const [savedVideos, setSavedVideos] = useState<SavedVideo[]>(JSON.parse(storage.getString("Favorites")!));
 
   return (

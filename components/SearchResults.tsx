@@ -8,10 +8,11 @@ import { SearchVideo } from "../Interface";
 interface SearchResultsProps { results: SearchVideo[] }
 
 const SearchResults: React.FC<SearchResultsProps> = ({ results }) => {
+  const navigation = useNavigation()
   const updatePlayingVideo: (newVideoId: string) => void = useContext(UpdateVideoContext);
 
   const playVideo = async (videoId: string): Promise<void> => {
-    useNavigation().navigate("Player" as never);
+    navigation.navigate("Player" as never);
     updatePlayingVideo(videoId)
   }
 

@@ -1,3 +1,4 @@
+// NOT INTEGRATED YET //
 import { useState } from "react";
 import { StyleSheet, FlatList, Platform, Pressable, Text } from "react-native";
 

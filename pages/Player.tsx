@@ -40,7 +40,7 @@ const Player: React.FC = () => {
     alert("Added to favorites")
   };
 
-  /*useEffect((): void => {
+  useEffect((): void => {
     const loadVideo = async () => {
       console.log("Vidéos favorites :", favoriteVideos);
       
@@ -66,7 +66,7 @@ const Player: React.FC = () => {
       }
     };
     loadVideo();
-  }, [videoId]);*/
+  }, [videoId]);
 
   useEffect((): void => {
     playingVideo.current.setVolumeAsync(volume);

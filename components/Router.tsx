@@ -10,7 +10,7 @@ const Router: React.FC = () => {
 
   return (
     <View style={customStyles.router}>
-      <Pressable style={customStyles.routerTab} onPress={(): void => navigation.navigate("Home" as never)}>
+      <Pressable style={customStyles.routerTab} onPress={(): void => navigation.navigate("Favorites" as never)}>
         <FontAwesome name="list" size={20} />
       </Pressable>
       <Pressable style={customStyles.routerTab} onPress={(): void => navigation.navigate("Player" as never)}>

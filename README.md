@@ -7,3 +7,16 @@
 - Favorite videos list to save locally
 - No ads, lightwweight and minimalist
 - Choose video and audio quality
+
+Original Figma design (just for original inspiration): https://www.figma.com/file/tyV5M0s2My7UbeK8hMScVH/
+Also the app UI is in FR even though everything is coded in ENG...
+
+## Tech behind the app
+
+- Data is stored locally in JSON format via MMKV
+- State managment is handled with useState hook and ContextAPI
+- TS used for interfaces, props, states, contexts
+- Navigation is handled with React Native stack navigation library
+- One YouTube API for research and one for video playback
+
+The app has been coded in about 30 hours over 3 days.

@@ -2,12 +2,12 @@ import { customStyles } from "../utils/Style";
 import { storage } from "../utils/DB";
 import { useContext, useState } from "react";
 import { FavoritesContext, UpdateFavoritesContext, UpdateVideoContext } from "../App";
+import Router from "../components/Router";
 import { View, Text, FlatList, Pressable, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { LongPressGestureHandler } from "react-native-gesture-handler";
 import DeleteModal from "../components/DeleteModal";
-import Router from "../components/Router";
-import { SavedVideo, SearchVideo } from "../Interface";
+import { SavedVideo } from "../Interface";
 
 const Favorites: React.FC = () => {
   const [isModalVisible, setDeleteModalVisible] = useState(false);

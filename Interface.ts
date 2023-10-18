@@ -16,3 +16,10 @@ export interface SavedVideo {
   channel: string;
   thumbnailUrl: string;
 }
+
+export interface ModalProps {
+  isVisible: boolean;
+  onClose: () => void;
+  onClick: () => void;
+  title: string;
+}

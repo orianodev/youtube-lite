@@ -1,12 +1,12 @@
 import { customStyles } from "../utils/Style";
 import { storage } from "../utils/DB";
 import React, { useEffect, useRef, useState, useContext } from "react";
-import { View, Text, Pressable, FlatList } from "react-native";
+import { FavoritesContext, UpdateFavoritesContext, VideoContext } from "../App";
+import Router from "../components/Router";
+import { View, Text, Pressable } from "react-native";
 import { Video, ResizeMode } from "expo-av";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Slider } from "@react-native-assets/slider";
-import { FavoritesContext, UpdateFavoritesContext, VideoContext } from "../App";
-import Router from "../components/Router";
 import { SavedVideo } from "../Interface";
 
 const Player: React.FC = () => {
@@ -43,7 +43,6 @@ const Player: React.FC = () => {
     const favoritesJson: string = JSON.stringify(favorites);
     storage.set("Favorites", favoritesJson);
     updateFavoriteVideos(favorites)
-    alert("Added to favorites")
   };
 
   const changeVideoSource = (index: number): void => {

@@ -5,8 +5,8 @@ import { NavigationProp, useNavigation } from "@react-navigation/native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 const Router: React.FC = () => {
-  const navigation: NavigationProp<ReactNavigation.RootParamList> = useNavigation();
   callFont();
+  const navigation: NavigationProp<ReactNavigation.RootParamList> = useNavigation();
 
   return (
     <View style={customStyles.router}>

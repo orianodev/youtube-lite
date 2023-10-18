@@ -1,9 +1,9 @@
 import { customStyles } from "../utils/Style";
 import { useState } from "react";
+import Router from "../components/Router";
 import { View, ActivityIndicator } from "react-native";
 import SearchBar from "../components/SearchBar";
 import SearchResults from "../components/SearchResults";
-import Router from "../components/Router";
 import { SearchVideo } from "../Interface";
 
 const Search: React.FC = () => {

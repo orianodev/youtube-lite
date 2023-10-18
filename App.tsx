@@ -5,7 +5,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Favorites from "./pages/Favorites";
 import Search from "./pages/Search";
-import Playlist from "./pages/Playlist";
 import Player from "./pages/Player";
 
 export const VideoContext: Context<string> = createContext("");
@@ -31,7 +30,6 @@ const App: React.FC = () => {
                 <Stack.Screen name="Favorites" component={Favorites} options={{ title: "Vidéos favorites" }} />
                 <Stack.Screen name="Player" component={Player} options={{ title: "Regarder une vidéo" }} />
                 <Stack.Screen name="Search" component={Search} options={{ title: "Recherche" }} />
-                <Stack.Screen name="Playlist" component={Playlist} />
               </Stack.Navigator>
             </NavigationContainer>
           </UpdateFavoritesContext.Provider>

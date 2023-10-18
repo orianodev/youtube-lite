@@ -1,16 +1,9 @@
-// NOT INTEGRATED YET //
-import { Modal, View, Text, Pressable, StyleSheet } from "react-native";
+import { Modal, View, Text, Pressable } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { customStyles } from "../utils/Style";
+import { ModalProps } from "../Interface";
 
-interface DeleteModalProps {
-    isVisible: boolean,
-    onClose: () => void,
-    onClick: () => void,
-    title: string,
-}
-
-const DeleteModal: React.FC<DeleteModalProps> = ({ isVisible, onClose, onClick, title }) => {
+const DeleteModal: React.FC<ModalProps> = ({ isVisible, onClose, onClick, title }) => {
     return (
         <Modal animationType="slide" transparent={true} visible={isVisible}>
             <View style={customStyles.modalContent}>

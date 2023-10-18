@@ -8,10 +8,10 @@
 - No ads, lightwweight and minimalist
 - Choose video and audio quality
 
+## Tech behind the app
+
 Original Figma design (just for original inspiration): https://www.figma.com/file/tyV5M0s2My7UbeK8hMScVH/
 Also the app UI is in FR even though everything is coded in ENG...
-
-## Tech behind the app
 
 - Data is stored locally in JSON format via MMKV
 - State managment is handled with useState hook and ContextAPI

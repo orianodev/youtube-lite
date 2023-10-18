@@ -2,7 +2,8 @@
   "expo": {
     "name": "youtube-lite",
     "slug": "youtube-lite",
-    "version": "0.1.0",
+    "version": "0.2.0",
+    "description": "Lite YouTube clone UI (NewPipe like) that fetches YouTube APIs.",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "userInterfaceStyle": "light",
@@ -15,7 +16,10 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {

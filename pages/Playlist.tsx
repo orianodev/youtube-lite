@@ -1,12 +1,14 @@
+import { customStyles } from "../utils/Style";
 import { View, Text } from "react-native";
-import { callFont } from "../Font";
-import { customStyles } from "../Style";
+import Router from "../components/Router";
 
-export default function Playlist() {
-  callFont()
+const Playlist: React.FC = () => {  
   return (
     <View style={customStyles.container}>
       <Text style={customStyles.text}>Playlist</Text>
+      <Router />
     </View>
   );
 }
+
+export default Playlist;

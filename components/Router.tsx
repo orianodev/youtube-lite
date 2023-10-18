@@ -1,37 +1,25 @@
-import { View, StyleSheet, Pressable, Text } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { customStyles } from "../Style";
+import { callFont } from "../utils/Font";  // Import font family from all pages
+import { customStyles } from "../utils/Style";
+import { View, Pressable } from "react-native";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 
-export default function Router() {
-  const navigation = useNavigation();
+const Router: React.FC = () => {
+  const navigation: NavigationProp<ReactNavigation.RootParamList> = useNavigation();
+  callFont();
 
   return (
-    <View>
-      <Pressable style={styles.button} onPress={() => navigation.navigate("Home" as never)}>
-        <Text style={customStyles.text}>Home</Text>
+    <View style={customStyles.router}>
+      <Pressable style={customStyles.routerTab} onPress={(): void => navigation.navigate("Home" as never)}>
+        <FontAwesome name="list" size={20} />
       </Pressable>
-      <Pressable style={styles.button} onPress={() => navigation.navigate("Search" as never)}>
-        <Text style={customStyles.text}>Search</Text>
+      <Pressable style={customStyles.routerTab} onPress={(): void => navigation.navigate("Player" as never)}>
+        <FontAwesome name="play" size={20} />
       </Pressable>
-      <Pressable style={styles.button} onPress={() => navigation.navigate("Playlist" as never)}>
-        <Text style={customStyles.text}>Playlist</Text>
-      </Pressable>
-      <Pressable style={styles.button} onPress={() => navigation.navigate("Player" as never)}>
-        <Text style={customStyles.text}>Player</Text>
+      <Pressable style={customStyles.routerTab} onPress={(): void => navigation.navigate("Search" as never)}>
+        <FontAwesome name="search" size={20} />
       </Pressable>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  button: {
-    backgroundColor: "#44f",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 5,
-    paddingHorizontal: 5,
-    borderRadius: 3,
-    margin: 1
-  },
-});
+export default Router;
